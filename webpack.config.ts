@@ -1,5 +1,5 @@
 import { buildWebpackConfig } from "./config/build/buildWebpackConfig";
-import { BuildPaths } from "./config/build/types/config";
+import { BuildEnvI, BuildPaths } from "./config/build/types/config";
 import path from "path";
 
 const paths: BuildPaths = {
@@ -8,13 +8,15 @@ const paths: BuildPaths = {
     build: path.resolve(__dirname, path.resolve(__dirname, "build"))
 }
 
-const mode = 'development'
-const isDev = mode === 'development'
+export default (env: BuildEnvI) => {
+    const mode = env.mode || 'development'
+    const isDev = mode === 'development'
+    const port = env.port || 8000
 
-const config = buildWebpackConfig({
-    mode,
-    paths,
-    isDev
-})
-
-export default config
+    return buildWebpackConfig({
+        mode,
+        paths,
+        isDev,
+        port
+    })
+}

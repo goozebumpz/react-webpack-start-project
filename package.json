@@ -4,8 +4,9 @@
   "description": "React template for development creating on base webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no tes t specified\" && exit 1",
-    "build": "webpack"
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "start": "webpack serve --env port=3000"
   },
   "keywords": [],
   "author": "goozebumpz",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@types/node": "^20.6.2",
     "@types/webpack": "^5.28.2",
+    "@types/webpack-dev-server": "^4.7.2",
     "html-webpack-plugin": "^5.5.3",
     "ts-loader": "^9.4.4",
     "ts-node": "^10.9.1",
